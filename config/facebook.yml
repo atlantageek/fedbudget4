@@ -1,0 +1,13 @@
+#config/facebook.yml
+ development: &defaults
+   app_id: 192236750829133
+   client_id: 192236750829133
+   client_secret: 13da0305aed83fc951694c31c6e29855
+   scope: user_about_me,offline_access
+   canvas_url: http://localhost:3000/fb-graph-sample-dev
+ 
+ test:
+   <<: *defaults
+ 
+ production:
+   <<: *defaults
