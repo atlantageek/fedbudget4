@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: 
+  descr: 
+  orig_income: 
+  : 
+  change_type: MyString
+  ref: MyString
+  editable: false
+
+two:
+  name: 
+  descr: 
+  orig_income: 
+  : 
+  change_type: MyString
+  ref: MyString
+  editable: false

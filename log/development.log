@@ -1,0 +1,2022 @@
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (127.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (102.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateFacebooks (20100805043508)
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100805043508')
+Migrating to CreateSubscriptions (20110623075710)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110623075710')
+Migrating to CreateAchievements (20110927070839)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110927070839')
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("achievements")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("facebooks")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("subscriptions")
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-21 23:38:15 -0400
+  Processing by CanvasController#create as HTML
+Completed   in 54ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.split):
+  app/controllers/canvas_controller.rb:7:in `create'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.4ms)
+
+
+Started POST "/?&fb_source=search&ref=ts" for 127.0.0.1 at 2012-09-21 23:39:18 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"3BMHNw0HUKQQ1kZMcMJSLzkxdpm7Q9oZd1qreyMbdVc.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDgyOTAwMDAsImlzc3VlZF9hdCI6MTM0ODI4NTE1Niwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFKcHgyZzRoSUlXeElvQ0lONENJekV3MXpVOFpDWVAxdG0zZkNmWkE2Nm9wTkk5UENaQ1BlWkJLNWl1WDVsYVJpOTRWWkFoR3h1Y28wT25rYTBuWkJjZW9YV2dWUjhiUVpEWkQiLCJ1c2VyIjp7ImNvdW50cnkiOiJ1cyIsImxvY2FsZSI6ImVuX1VTIiwiYWdlIjp7Im1pbiI6MjF9fSwidXNlcl9pZCI6IjY4MDkxMDczMiJ9", "fb_source"=>"search", "ref"=>"ts"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFacebook Load (0.1ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "facebooks" ("identifier", "access_token", "created_at", "updated_at") VALUES ('680910732', 'AAACu1psZB9k0BAJpx2g4hIIWxIoCIN4CIzEw1zU8ZCYP1tm3fCfZA66opNI9PCZCPeZBK5iuX5laRi94VZAhGxuco0Onka0nZBceoXWgVR8bQZDZD', '2012-09-22 03:39:19.064286', '2012-09-22 03:39:19.064286')[0m
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (1.5ms)
+Completed 200 OK in 411ms (Views: 7.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/?&fb_source=search&ref=ts" for 127.0.0.1 at 2012-09-21 23:49:27 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"eISFOFFpqCQ8OXea6gkmLERmwlAuXXJKm-fSBFPisaA.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDgyOTAwMDAsImlzc3VlZF9hdCI6MTM0ODI4NTc2NCwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFKcHgyZzRoSUlXeElvQ0lONENJekV3MXpVOFpDWVAxdG0zZkNmWkE2Nm9wTkk5UENaQ1BlWkJLNWl1WDVsYVJpOTRWWkFoR3h1Y28wT25rYTBuWkJjZW9YV2dWUjhiUVpEWkQiLCJ1c2VyIjp7ImNvdW50cnkiOiJ1cyIsImxvY2FsZSI6ImVuX1VTIiwiYWdlIjp7Im1pbiI6MjF9fSwidXNlcl9pZCI6IjY4MDkxMDczMiJ9", "fb_source"=>"search", "ref"=>"ts"}
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (2.0ms)
+Completed 200 OK in 36ms (Views: 5.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/?&fb_source=search&ref=ts" for 127.0.0.1 at 2012-09-21 23:50:13 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"BI3V_arQ47hvl9ecMsCsRF1m-mTyqwLW2F6rn8NHzh0.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDgyOTAwMDAsImlzc3VlZF9hdCI6MTM0ODI4NTgxMSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFKcHgyZzRoSUlXeElvQ0lONENJekV3MXpVOFpDWVAxdG0zZkNmWkE2Nm9wTkk5UENaQ1BlWkJLNWl1WDVsYVJpOTRWWkFoR3h1Y28wT25rYTBuWkJjZW9YV2dWUjhiUVpEWkQiLCJ1c2VyIjp7ImNvdW50cnkiOiJ1cyIsImxvY2FsZSI6ImVuX1VTIiwiYWdlIjp7Im1pbiI6MjF9fSwidXNlcl9pZCI6IjY4MDkxMDczMiJ9", "fb_source"=>"search", "ref"=>"ts"}
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (1.8ms)
+Completed 200 OK in 20ms (Views: 4.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/?&fb_source=search&ref=ts" for 127.0.0.1 at 2012-09-21 23:52:30 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"oevDK7JnBYzN2Fo7wYjVSDInvl50jLKXsvm6MFqsA3k.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDgyOTAwMDAsImlzc3VlZF9hdCI6MTM0ODI4NTk0OCwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFKcHgyZzRoSUlXeElvQ0lONENJekV3MXpVOFpDWVAxdG0zZkNmWkE2Nm9wTkk5UENaQ1BlWkJLNWl1WDVsYVJpOTRWWkFoR3h1Y28wT25rYTBuWkJjZW9YV2dWUjhiUVpEWkQiLCJ1c2VyIjp7ImNvdW50cnkiOiJ1cyIsImxvY2FsZSI6ImVuX1VTIiwiYWdlIjp7Im1pbiI6MjF9fSwidXNlcl9pZCI6IjY4MDkxMDczMiJ9", "fb_source"=>"search", "ref"=>"ts"}
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (1.9ms)
+Completed 200 OK in 20ms (Views: 3.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/?&fb_source=search&ref=ts" for 127.0.0.1 at 2012-09-21 23:53:03 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"1jRKOKWFaGESgEMy_K4Cud35gIVnC8zHCTyZn8YqbZ4.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDgyOTAwMDAsImlzc3VlZF9hdCI6MTM0ODI4NTk4MSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFKcHgyZzRoSUlXeElvQ0lONENJekV3MXpVOFpDWVAxdG0zZkNmWkE2Nm9wTkk5UENaQ1BlWkJLNWl1WDVsYVJpOTRWWkFoR3h1Y28wT25rYTBuWkJjZW9YV2dWUjhiUVpEWkQiLCJ1c2VyIjp7ImNvdW50cnkiOiJ1cyIsImxvY2FsZSI6ImVuX1VTIiwiYWdlIjp7Im1pbiI6MjF9fSwidXNlcl9pZCI6IjY4MDkxMDczMiJ9", "fb_source"=>"search", "ref"=>"ts"}
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (1.5ms)
+Completed 200 OK in 28ms (Views: 4.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/?&fb_source=search&ref=ts" for 127.0.0.1 at 2012-09-21 23:53:34 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"WqAFbFEkLr3CfHfFop_H0fbcNdMpLSSi1P570flE8uw.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDgyOTAwMDAsImlzc3VlZF9hdCI6MTM0ODI4NjAxMiwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFKcHgyZzRoSUlXeElvQ0lONENJekV3MXpVOFpDWVAxdG0zZkNmWkE2Nm9wTkk5UENaQ1BlWkJLNWl1WDVsYVJpOTRWWkFoR3h1Y28wT25rYTBuWkJjZW9YV2dWUjhiUVpEWkQiLCJ1c2VyIjp7ImNvdW50cnkiOiJ1cyIsImxvY2FsZSI6ImVuX1VTIiwiYWdlIjp7Im1pbiI6MjF9fSwidXNlcl9pZCI6IjY4MDkxMDczMiJ9", "fb_source"=>"search", "ref"=>"ts"}
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (1.6ms)
+Completed 200 OK in 53ms (Views: 3.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/?&fb_source=search&ref=ts" for 127.0.0.1 at 2012-09-21 23:54:50 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"cKwUOZVMMsWFEmuvRHh8QA9xEthwNPB4nTdxZJ_O43E.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDgyOTAwMDAsImlzc3VlZF9hdCI6MTM0ODI4NjA4OSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFKcHgyZzRoSUlXeElvQ0lONENJekV3MXpVOFpDWVAxdG0zZkNmWkE2Nm9wTkk5UENaQ1BlWkJLNWl1WDVsYVJpOTRWWkFoR3h1Y28wT25rYTBuWkJjZW9YV2dWUjhiUVpEWkQiLCJ1c2VyIjp7ImNvdW50cnkiOiJ1cyIsImxvY2FsZSI6ImVuX1VTIiwiYWdlIjp7Im1pbiI6MjF9fSwidXNlcl9pZCI6IjY4MDkxMDczMiJ9", "fb_source"=>"search", "ref"=>"ts"}
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (1.7ms)
+Completed 200 OK in 18ms (Views: 3.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/?&fb_source=search&ref=ts" for 127.0.0.1 at 2012-09-21 23:55:18 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"Nmw22k0uicuYBVD2AwAd5LqBwLCBLDRHb0L-sjijrck.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDgyOTAwMDAsImlzc3VlZF9hdCI6MTM0ODI4NjExNSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFKcHgyZzRoSUlXeElvQ0lONENJekV3MXpVOFpDWVAxdG0zZkNmWkE2Nm9wTkk5UENaQ1BlWkJLNWl1WDVsYVJpOTRWWkFoR3h1Y28wT25rYTBuWkJjZW9YV2dWUjhiUVpEWkQiLCJ1c2VyIjp7ImNvdW50cnkiOiJ1cyIsImxvY2FsZSI6ImVuX1VTIiwiYWdlIjp7Im1pbiI6MjF9fSwidXNlcl9pZCI6IjY4MDkxMDczMiJ9", "fb_source"=>"search", "ref"=>"ts"}
+  [1m[36mFacebook Load (0.1ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (1.6ms)
+Completed 200 OK in 19ms (Views: 4.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-23 08:27:49 -0400
+  Processing by CanvasController#create as HTML
+Completed   in 7ms
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.split):
+  app/controllers/canvas_controller.rb:7:in `create'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.8ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.3ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.0ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 08:30:25 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"YZ2BMHO1CAXdQ5YYdNw4zGrPhupyQBkpCs6RYunsCzo.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0MDg4MDAsImlzc3VlZF9hdCI6MTM0ODQwMzQxNiwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFPbndFcFR6RzhVMFpDWkJvSnJqRW1aQ0d4QW9pOXg4aVpCM1UxSTVDWkJaQVkxSk10aHROWkNENWZQTlVRZDBHNzFXV1pBWkJqczExMlBncjRBcXZSUTZBZUxHSUFLVEhaQ1FaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE "facebooks" SET "access_token" = 'AAACu1psZB9k0BAOnwEpTzG8U0ZCZBoJrjEmZCGxAoi9x8iZB3U1I5CZBZAY1JMthtNZCD5fPNUQd0G71WWZAZBjs112Pgr4AqvRQ6AeLGIAKTHZCQZDZD', "updated_at" = '2012-09-23 12:30:25.472606' WHERE "facebooks"."id" = 1
+  [1m[36mFacebook Load (0.4ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/show.html.erb within layouts/canvas (5.9ms)
+Completed 200 OK in 237ms (Views: 50.1ms | ActiveRecord: 0.8ms)
+  [1m[36mSQL (17.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateFacebooks (20100805043508)
+Migrating to CreateSubscriptions (20110623075710)
+Migrating to CreateAchievements (20110927070839)
+Migrating to CreateIncomes (20120923144951)
+  [1m[35mSQL (15.7ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateFacebooks (20100805043508)
+Migrating to CreateSubscriptions (20110623075710)
+Migrating to CreateAchievements (20110927070839)
+Migrating to CreateExpenses (20120923145010)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateFacebooks (20100805043508)
+Migrating to CreateSubscriptions (20110623075710)
+Migrating to CreateAchievements (20110927070839)
+Migrating to CreateExpenses (20120923145010)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateFacebooks (20100805043508)
+Migrating to CreateSubscriptions (20110623075710)
+Migrating to CreateAchievements (20110927070839)
+Migrating to CreateExpenses (20120923145010)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (24.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923145010')
+Migrating to CreateIncomes (20120923145222)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateFacebooks (20100805043508)
+Migrating to CreateSubscriptions (20110623075710)
+Migrating to CreateAchievements (20110927070839)
+Migrating to CreateExpenses (20120923145010)
+Migrating to CreateIncomes (20120923145222)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923145222')
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("achievements")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("expenses")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("facebooks")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("incomes")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("subscriptions")
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 11:09:54 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"olDPdv9bMv0n8lYqQr5oxX_7yPo5B_EOV6rf_5_h_Vw.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0MTk2MDAsImlzc3VlZF9hdCI6MTM0ODQxMjk5Mywib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFLYlQ3NmVJQVpCN0lFR25GUmJxUkF2VThWVmtDZVloMXRKb24yZjUxTjJ0MlRoQ1VDUER2RFZoZEh0RHRIalpBUHQya28wckxlR0NhSm96RGNaQkkwWkNuR1JFV3daRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE "facebooks" SET "access_token" = 'AAACu1psZB9k0BAKbT76eIAZB7IEGnFRbqRAvU8VVkCeYh1tJon2f51N2t2ThCUCPDvDVhdHtDtHjZAPt2ko0rLeGCaJozDcZBI0ZCnGREWwZDZD', "updated_at" = '2012-09-23 15:09:54.281030' WHERE "facebooks"."id" = 1[0m
+  [1m[35mFacebook Load (0.4ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1
+Rendered canvas/show.html.erb within layouts/canvas (3.9ms)
+Completed 200 OK in 222ms (Views: 36.5ms | ActiveRecord: 0.9ms)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateFacebooks (20100805043508)
+Migrating to CreateSubscriptions (20110623075710)
+Migrating to CreateAchievements (20110927070839)
+Migrating to CreateExpenses (20120923145010)
+Migrating to CreateIncomes (20120923145222)
+Migrating to CreateScenarios (20120923150819)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:02:39 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"FMUuMchmMsvX6GnPZDNfqWf6kSkCQ5r0QTvPehK1mjA.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0ODU1OCwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[36mFacebook Load (0.4ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE "facebooks" SET "access_token" = 'AAACu1psZB9k0BABjvlKZBs75DPiHEdXVH1ZB1mCCN2naqZAhxLSCOYl5GNBPF0jnHXfSAngXFpHZBJOBEuXqc5PprnDJyn8oeROSkcIy4eAZDZD', "updated_at" = '2012-09-24 01:02:39.421720' WHERE "facebooks"."id" = 1
+  [1m[36mFacebook Load (0.9ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/show.html.erb within layouts/canvas (6.8ms)
+Completed 200 OK in 167ms (Views: 33.9ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:06:37 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"pJ2cRmcdx_NuBIBIKr3tm3NOVL90sHsMXxgz6QQM-UU.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0ODc5Nywib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.3ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/show.html.erb within layouts/canvas (69.9ms)
+Completed   in 160ms
+
+ActionView::Template::Error (undefined local variable or method `incomes' for #<#<Class:0xbe7e694>:0xbe7d370>):
+    16:       <div class="span1">New Rate</div>
+    17:       <div class="span1">Revenue</div>
+    18:     </div>
+    19:     <% incomes.each do |inc| %>
+    20:     <div class="row">
+    21:       <div class="span2"><%=inc.name %></div>
+    22:       <div class="span1"><%=inc.orig_rate %></div>
+  app/views/canvas/show.html.erb:19:in `block in _app_views_canvas_show_html_erb__638375312_99864040_282350738'
+  app/views/canvas/show.html.erb:2:in `_app_views_canvas_show_html_erb__638375312_99864040_282350738'
+  app/controllers/canvas_controller.rb:12:in `create'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.9ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:06:48 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"tCFfZt12Lpox6HCaCkjwr3qBjR4hd85xpjbKGvWIUWs.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0ODgwOCwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/show.html.erb within layouts/canvas (11.5ms)
+Completed   in 108ms
+
+ActionView::Template::Error (undefined local variable or method `incomes' for #<#<Class:0xbdeffac>:0xbde780c>):
+    16:       <div class="span1">New Rate</div>
+    17:       <div class="span1">Revenue</div>
+    18:     </div>
+    19:     <% incomes.each do |inc| %>
+    20:     <div class="row">
+    21:       <div class="span2"><%=inc.name %></div>
+    22:       <div class="span1"><%=inc.orig_rate %></div>
+  app/views/canvas/show.html.erb:19:in `block in _app_views_canvas_show_html_erb__638375312_99563320_282350738'
+  app/views/canvas/show.html.erb:2:in `_app_views_canvas_show_html_erb__638375312_99563320_282350738'
+  app/controllers/canvas_controller.rb:11:in `create'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.7ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:07:43 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"wOc4ApcqTp9kaaMK-FELdflw4howEbF-H6QWe3SRwjQ.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0ODg2Mywib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/show.html.erb within layouts/canvas (55.0ms)
+Completed   in 87ms
+
+ActionView::Template::Error (undefined local variable or method `incomes' for #<#<Class:0xb21deb8>:0xb1f7bc8>):
+    16:       <div class="span1">New Rate</div>
+    17:       <div class="span1">Revenue</div>
+    18:     </div>
+    19:     <% incomes.each do |inc| %>
+    20:     <div class="row">
+    21:       <div class="span2"><%=inc.name %></div>
+    22:       <div class="span1"><%=inc.orig_rate %></div>
+  app/views/canvas/show.html.erb:19:in `block in _app_views_canvas_show_html_erb__638375312_93200360_282350738'
+  app/views/canvas/show.html.erb:2:in `_app_views_canvas_show_html_erb__638375312_93200360_282350738'
+  app/controllers/canvas_controller.rb:13:in `create'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.3ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.8ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:08:19 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"urqLHQJDHRifPmSQFpQmW1dXJjyX7LIucdTAVfzLWbU.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0ODg5OSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/show.html.erb within layouts/canvas (12.7ms)
+Completed   in 34ms
+
+ActionView::Template::Error (undefined local variable or method `incomes' for #<#<Class:0xba72f00>:0xba5f608>):
+    16:       <div class="span1">New Rate</div>
+    17:       <div class="span1">Revenue</div>
+    18:     </div>
+    19:     <% incomes.each do |inc| %>
+    20:     <div class="row">
+    21:       <div class="span2"><%=inc.name %></div>
+    22:       <div class="span1"><%=inc.orig_rate %></div>
+  app/views/canvas/show.html.erb:19:in `block in _app_views_canvas_show_html_erb__638375312_97710690_282350738'
+  app/views/canvas/show.html.erb:2:in `_app_views_canvas_show_html_erb__638375312_97710690_282350738'
+  app/controllers/canvas_controller.rb:13:in `create'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.3ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.8ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:09:40 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"RyaKDJmDZGm4VV6Dp72b14TM-BehaxjfbEdA0Sq8aM8.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0ODk4MCwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/create.html.erb within layouts/canvas (14.5ms)
+Completed   in 78ms
+
+ActionView::Template::Error (undefined local variable or method `incomes' for #<#<Class:0xbd7967c>:0xbd788f8>):
+    16:       <div class="span1">New Rate</div>
+    17:       <div class="span1">Revenue</div>
+    18:     </div>
+    19:     <% incomes.each do |inc| %>
+    20:     <div class="row">
+    21:       <div class="span2"><%=inc.name %></div>
+    22:       <div class="span1"><%=inc.orig_rate %></div>
+  app/views/canvas/create.html.erb:19:in `block in _app_views_canvas_create_html_erb___1032240648_99336080_282350738'
+  app/views/canvas/create.html.erb:2:in `_app_views_canvas_create_html_erb___1032240648_99336080_282350738'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.2ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:09:56 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"OtNsdftJrrVoelryaQL42AvwjCvEwWeHRdcha7ovo_8.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0ODk5NSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mFacebook Load (0.3ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/create.html.erb within layouts/canvas (70.7ms)
+Completed   in 114ms
+
+ActionView::Template::Error (undefined local variable or method `incomes' for #<#<Class:0xb1ba32c>:0xb1aeaf4>):
+    16:       <div class="span1">New Rate</div>
+    17:       <div class="span1">Revenue</div>
+    18:     </div>
+    19:     <% incomes.each do |inc| %>
+    20:     <div class="row">
+    21:       <div class="span2"><%=inc.name %></div>
+    22:       <div class="span1"><%=inc.orig_rate %></div>
+  app/views/canvas/create.html.erb:19:in `block in _app_views_canvas_create_html_erb___1032240648_93153170_282350738'
+  app/views/canvas/create.html.erb:2:in `_app_views_canvas_create_html_erb___1032240648_93153170_282350738'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.6ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:10:21 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"zzP9X7G7UHzMuHG3JVQ4AesR5y264n7QY72NNiasaSI.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0OTAyMSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/create.html.erb within layouts/canvas (1.9ms)
+Completed   in 22ms
+
+ActionView::Template::Error (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each):
+    16:       <div class="span1">New Rate</div>
+    17:       <div class="span1">Revenue</div>
+    18:     </div>
+    19:     <% @incomes.each do |inc| %>
+    20:     <div class="row">
+    21:       <div class="span2"><%=inc.name %></div>
+    22:       <div class="span1"><%=inc.orig_rate %></div>
+  app/views/canvas/create.html.erb:19:in `block in _app_views_canvas_create_html_erb___1032240648_97752680_282350738'
+  app/views/canvas/create.html.erb:2:in `_app_views_canvas_create_html_erb___1032240648_97752680_282350738'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.4ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:10:40 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"yz1RMERgz7mTmlxbH5z2NWlnT7uebhRjMWZTSHKryug.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ0OTAzOSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mFacebook Load (0.2ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."id" = 1 LIMIT 1[0m
+Rendered canvas/create.html.erb within layouts/canvas (9.9ms)
+Completed 200 OK in 114ms (Views: 16.3ms | ActiveRecord: 0.7ms)
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateFacebooks (20100805043508)
+Migrating to CreateSubscriptions (20110623075710)
+Migrating to CreateAchievements (20110927070839)
+Migrating to CreateExpenses (20120923145010)
+Migrating to CreateIncomes (20120923145222)
+Migrating to CreateScenarios (20120923150819)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923150819')
+Migrating to CreateExpenseEntries (20120923150906)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923150906')
+Migrating to CreateIncomeEntries (20120923150921)
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923150921')
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("achievements")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("expense_entries")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("expenses")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("facebooks")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("income_entries")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("incomes")[0m
+  [1m[35mSQL (0.6ms)[0m  PRAGMA index_list("scenarios")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("subscriptions")[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('10% Tax Bracket', '2012''s 10% tax bracket', 15092670, 10.0, NULL, 'bracket10', 't', '2012-09-24 01:34:20.424322', '2012-09-24 01:34:20.424322')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('15% Tax Bracket', 'Current 15% tax bracket', 157306037, 15.0, NULL, 'bracket15', 't', '2012-09-24 01:34:20.820041', '2012-09-24 01:34:20.820041')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('25% Tax Bracket', 'Current 25% tax bracket', 274328164, 25.0, NULL, 'bracket25', 't', '2012-09-24 01:34:20.915748', '2012-09-24 01:34:20.915748')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('28% Tax Bracket', 'Current 28% tax bracket', 119085422, 28.0, NULL, 'bracket28', 't', '2012-09-24 01:34:21.011633', '2012-09-24 01:34:21.011633')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('33% Tax Bracket', 'Current 33% tax bracket', 98477349, 33.0, NULL, 'bracket33', 't', '2012-09-24 01:34:21.107574', '2012-09-24 01:34:21.107574')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('35% Tax Bracket', 'Current 35% tax bracket', 270684118, 35.0, NULL, 'bracket35', 't', '2012-09-24 01:34:21.203676', '2012-09-24 01:34:21.203676')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Capital Gains', 'Current capital gains', 47345378, 15.0, NULL, 'capital_gains', 't', '2012-09-24 01:34:21.335785', '2012-09-24 01:34:21.335785')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Gasoline Tax', 'Current capital gains', 129557444, 0.18, NULL, 'gasoline_tax', 't', '2012-09-24 01:34:21.466514', '2012-09-24 01:34:21.466514')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Corporate Rate', 'Current capital gains', 746093750, 25.0, NULL, 'corporate_tax', 't', '2012-09-24 01:34:21.611570', '2012-09-24 01:34:21.611570')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Payroll Taxes', 'Payroll Taxes', 864000000, 25.0, NULL, 'payroll_tax', 't', '2012-09-24 01:34:21.740517', '2012-09-24 01:34:21.740517')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Misc.', 'Payroll Taxes', 184600000, NULL, NULL, 'misc_income', 'f', '2012-09-24 01:34:21.833115', '2012-09-24 01:34:21.833115')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Defense', NULL, 672900000, 'defense', 't', '2012-09-24 01:34:21.940279', '2012-09-24 01:34:21.940279')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Health and Human services', NULL, 949900000, 'health', 't', '2012-09-24 01:34:22.031647', '2012-09-24 01:34:22.031647')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Education', NULL, 71900000, 'education', 't', '2012-09-24 01:34:22.151350', '2012-09-24 01:34:22.151350')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Veteran Affairs', NULL, 139700000, 'vetran', 't', '2012-09-24 01:34:22.223345', '2012-09-24 01:34:22.223345')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Housing', NULL, 46300000, 'housing', 't', '2012-09-24 01:34:22.307356', '2012-09-24 01:34:22.307356')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of State', NULL, 59500000, 'state', 't', '2012-09-24 01:34:22.391329', '2012-09-24 01:34:22.391329')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Homeland Security', NULL, 55400000, 'homeland', 't', '2012-09-24 01:34:22.475359', '2012-09-24 01:34:22.475359')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Energy', NULL, 35000000, 'energy', 't', '2012-09-24 01:34:22.559530', '2012-09-24 01:34:22.559530')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Justice', NULL, 36500000, 'justice', 't', '2012-09-24 01:34:22.643346', '2012-09-24 01:34:22.643346')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Agriculture', NULL, 154500000, 'agriculture', 't', '2012-09-24 01:34:22.727347', '2012-09-24 01:34:22.727347')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('National Aeronautics and Space Administration', NULL, 17800000, 'nasa', 't', '2012-09-24 01:34:22.816861', '2012-09-24 01:34:22.816861')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('National Intelligence Program', NULL, 52600000, 'intelligence', 't', '2012-09-24 01:34:22.906298', '2012-09-24 01:34:22.906298')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Transportation', NULL, 98500000, 'transportation', 't', '2012-09-24 01:34:23.008887', '2012-09-24 01:34:23.008887')[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of the Treasury', NULL, 110300000, 'treasury', 't', '2012-09-24 01:34:23.099203', '2012-09-24 01:34:23.099203')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of the Interior', NULL, 13500000, 'interior', 't', '2012-09-24 01:34:23.200824', '2012-09-24 01:34:23.200824')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Labor', NULL, 101700000, 'labor', 't', '2012-09-24 01:34:23.291206', '2012-09-24 01:34:23.291206')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Social Security Administration', NULL, 882700000, 'ss', 't', '2012-09-24 01:34:23.392855', '2012-09-24 01:34:23.392855')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Commerce', NULL, 9000000, 'commerce', 't', '2012-09-24 01:34:23.488165', '2012-09-24 01:34:23.488165')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Environmental Protection Agency', NULL, 8900000, 'EPA', 't', '2012-09-24 01:34:23.579226', '2012-09-24 01:34:23.579226')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('National Science Foundation', NULL, 7500000, 'NSF', 't', '2012-09-24 01:34:23.674618', '2012-09-24 01:34:23.674618')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Small Business Administration', NULL, 1400000, 'sba', 't', '2012-09-24 01:34:23.771191', '2012-09-24 01:34:23.771191')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Corporation for National and Community Service', NULL, 1100000, 'community_service', 't', '2012-09-24 01:34:23.866510', '2012-09-24 01:34:23.866510')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Net interest', NULL, 246000000, 'interest', 'f', '2012-09-24 01:34:23.963218', '2012-09-24 01:34:23.963218')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Army Corps ', NULL, 8200000, 'civil_eng', 't', '2012-09-24 01:34:24.059219', '2012-09-24 01:34:24.059219')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Other', NULL, 29500000, 'other', 'f', '2012-09-24 01:34:24.143223', '2012-09-24 01:34:24.143223')[0m
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:47:15 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"LOyBE004TvknBMQXOC18jYXNmpk2z1iEc_etI8BxaQs.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ1MTIzNCwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.2ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Completed   in 163ms
+
+NoMethodError (undefined method `identity' for #<Class:0xbc76144>):
+  app/controllers/canvas_controller.rb:13:in `create'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.9ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (31.3ms)
+
+
+Started POST "/?&fb_source=bookmark_apps&ref=bookmarks&count=0&fb_bmpos=2_0" for 127.0.0.1 at 2012-09-23 21:47:32 -0400
+  Processing by CanvasController#create as HTML
+  Parameters: {"signed_request"=>"eLDrukjk6JgkAqI7-0tUbvuPmq_NDbRO_d7ZGEeMAiM.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEzNDg0NTU2MDAsImlzc3VlZF9hdCI6MTM0ODQ1MTI1MSwib2F1dGhfdG9rZW4iOiJBQUFDdTFwc1pCOWswQkFCanZsS1pCczc1RFBpSEVkWFZIMVpCMW1DQ04ybmFxWkFoeExTQ09ZbDVHTkJQRjBqbkhYZlNBbmdYRnBIWkJKT0JFdVhxYzVQcHJuREp5bjhvZVJPU2tjSXk0ZUFaRFpEIiwidXNlciI6eyJjb3VudHJ5IjoidXMiLCJsb2NhbGUiOiJlbl9VUyIsImFnZSI6eyJtaW4iOjIxfX0sInVzZXJfaWQiOiI2ODA5MTA3MzIifQ", "fb_source"=>"bookmark_apps", "ref"=>"bookmarks", "count"=>"0", "fb_bmpos"=>"2_0"}
+  [1m[35mFacebook Load (0.4ms)[0m  SELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "facebooks".* FROM "facebooks" WHERE "facebooks"."identifier" = '680910732' LIMIT 1[0m
+Completed   in 65ms
+
+RuntimeError (#<Facebook id: 1, identifier: "680910732", access_token: "AAACu1psZB9k0BABjvlKZBs75DPiHEdXVH1ZB1mCCN2naqZAhxL...", created_at: "2012-09-22 03:39:19", updated_at: "2012-09-24 01:02:39">):
+  app/controllers/canvas_controller.rb:13:in `create'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.2ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.5ms)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (120.9ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (94.6ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (115.6ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (68.4ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (98.1ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (91.4ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (70.2ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (71.0ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (101.7ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (88.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (179.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (95.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (95.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (71.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (71.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (83.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (83.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (121.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (146.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (91.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.3ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (132.1ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (90.1ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (182.8ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (89.1ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (125.2ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (100.2ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (161.6ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (130.9ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (149.0ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (85.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (95.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (82.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (84.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (85.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (130.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (191.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (156.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (179.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (227.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (83.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, NULL, '2012-09-24 02:37:51.100564', '2012-09-24 02:37:51.100564')
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mScenario Load (0.7ms)[0m  [1mSELECT "scenarios".* FROM "scenarios" LIMIT 1[0m
+  [1m[35mIncome Load (21.2ms)[0m  SELECT "incomes".* FROM "incomes"
+  [1m[36mScenario Load (0.7ms)[0m  [1mSELECT "scenarios".* FROM "scenarios" LIMIT 1[0m
+  [1m[35mIncome Load (2.6ms)[0m  SELECT "incomes".* FROM "incomes"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.7ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 1, 10.0, '2012-09-24 02:46:53.871790', '2012-09-24 02:46:53.871790')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 2, 15.0, '2012-09-24 02:46:54.092577', '2012-09-24 02:46:54.092577')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 3, 25.0, '2012-09-24 02:46:54.200046', '2012-09-24 02:46:54.200046')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 4, 28.0, '2012-09-24 02:46:54.307197', '2012-09-24 02:46:54.307197')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 5, 33.0, '2012-09-24 02:46:54.403985', '2012-09-24 02:46:54.403985')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 6, 35.0, '2012-09-24 02:46:54.511142', '2012-09-24 02:46:54.511142')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 7, 15.0, '2012-09-24 02:46:54.655940', '2012-09-24 02:46:54.655940')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 8, 0.18, '2012-09-24 02:46:54.763979', '2012-09-24 02:46:54.763979')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 9, 25.0, '2012-09-24 02:46:54.871025', '2012-09-24 02:46:54.871025')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 10, 25.0, '2012-09-24 02:46:54.967900', '2012-09-24 02:46:54.967900')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 11, NULL, '2012-09-24 02:46:55.087953', '2012-09-24 02:46:55.087953')
+  [1m[36mExpense Load (1.9ms)[0m  [1mSELECT "expenses".* FROM "expenses"[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 1, 672900000.0, '2012-09-24 02:46:55.238941', '2012-09-24 02:46:55.238941')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 2, 949900000.0, '2012-09-24 02:46:55.316186', '2012-09-24 02:46:55.316186')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 3, 71900000.0, '2012-09-24 02:46:55.399965', '2012-09-24 02:46:55.399965')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 4, 139700000.0, '2012-09-24 02:46:55.483911', '2012-09-24 02:46:55.483911')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 5, 46300000.0, '2012-09-24 02:46:55.567937', '2012-09-24 02:46:55.567937')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 6, 59500000.0, '2012-09-24 02:46:55.663947', '2012-09-24 02:46:55.663947')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 7, 55400000.0, '2012-09-24 02:46:55.760030', '2012-09-24 02:46:55.760030')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 8, 35000000.0, '2012-09-24 02:46:55.905305', '2012-09-24 02:46:55.905305')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 9, 36500000.0, '2012-09-24 02:46:56.059948', '2012-09-24 02:46:56.059948')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 10, 154500000.0, '2012-09-24 02:46:56.155197', '2012-09-24 02:46:56.155197')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 11, 17800000.0, '2012-09-24 02:46:56.251906', '2012-09-24 02:46:56.251906')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 12, 52600000.0, '2012-09-24 02:46:56.347974', '2012-09-24 02:46:56.347974')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 13, 98500000.0, '2012-09-24 02:46:56.443966', '2012-09-24 02:46:56.443966')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 14, 110300000.0, '2012-09-24 02:46:56.539918', '2012-09-24 02:46:56.539918')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 15, 13500000.0, '2012-09-24 02:46:56.636662', '2012-09-24 02:46:56.636662')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 16, 101700000.0, '2012-09-24 02:46:56.780678', '2012-09-24 02:46:56.780678')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 17, 882700000.0, '2012-09-24 02:46:56.937292', '2012-09-24 02:46:56.937292')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 18, 9000000.0, '2012-09-24 02:46:57.081179', '2012-09-24 02:46:57.081179')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 19, 8900000.0, '2012-09-24 02:46:57.164295', '2012-09-24 02:46:57.164295')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 20, 7500000.0, '2012-09-24 02:46:57.248279', '2012-09-24 02:46:57.248279')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 21, 1400000.0, '2012-09-24 02:46:57.332262', '2012-09-24 02:46:57.332262')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 22, 1100000.0, '2012-09-24 02:46:57.415538', '2012-09-24 02:46:57.415538')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 23, 246000000.0, '2012-09-24 02:46:57.512309', '2012-09-24 02:46:57.512309')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 24, 8200000.0, '2012-09-24 02:46:57.596260', '2012-09-24 02:46:57.596260')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 25, 29500000.0, '2012-09-24 02:46:57.679911', '2012-09-24 02:46:57.679911')
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.3ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (206.1ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (145.8ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (116.3ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (83.7ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (115.9ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (82.8ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (92.5ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (81.2ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (143.0ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (129.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (143.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (81.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (71.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (83.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (83.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (71.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (83.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (83.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (95.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (161.1ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (102.2ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (185.6ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (160.4ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (116.4ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (97.4ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (94.2ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (107.0ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (107.5ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (94.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (107.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (142.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (155.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (95.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (95.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (83.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (95.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (107.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (83.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (95.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mScenario Load (0.7ms)[0m  [1mSELECT "scenarios".* FROM "scenarios" LIMIT 1[0m
+  [1m[35mIncome Load (0.9ms)[0m  SELECT "incomes".* FROM "incomes"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 1, 10.0, '2012-09-24 02:58:22.580360', '2012-09-24 02:58:22.580360')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 2, 15.0, '2012-09-24 02:58:22.799851', '2012-09-24 02:58:22.799851')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 3, 25.0, '2012-09-24 02:58:22.895730', '2012-09-24 02:58:22.895730')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 4, 28.0, '2012-09-24 02:58:22.991565', '2012-09-24 02:58:22.991565')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 5, 33.0, '2012-09-24 02:58:23.088915', '2012-09-24 02:58:23.088915')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 6, 35.0, '2012-09-24 02:58:23.244108', '2012-09-24 02:58:23.244108')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 7, 15.0, '2012-09-24 02:58:23.327432', '2012-09-24 02:58:23.327432')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 8, 0.18, '2012-09-24 02:58:23.448067', '2012-09-24 02:58:23.448067')[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 9, 25.0, '2012-09-24 02:58:23.519923', '2012-09-24 02:58:23.519923')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 10, 25.0, '2012-09-24 02:58:23.892503', '2012-09-24 02:58:23.892503')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "income_entries" ("scenario_id", "income_id", "entry", "created_at", "updated_at") VALUES (1, 11, NULL, '2012-09-24 02:58:24.050726', '2012-09-24 02:58:24.050726')
+  [1m[36mExpense Load (1.6ms)[0m  [1mSELECT "expenses".* FROM "expenses"[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 1, 672900000.0, '2012-09-24 02:58:24.223283', '2012-09-24 02:58:24.223283')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 2, 949900000.0, '2012-09-24 02:58:24.323871', '2012-09-24 02:58:24.323871')[0m
+  [1m[35mAREL (4.0ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 3, 71900000.0, '2012-09-24 02:58:24.432962', '2012-09-24 02:58:24.432962')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 4, 139700000.0, '2012-09-24 02:58:24.540019', '2012-09-24 02:58:24.540019')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 5, 46300000.0, '2012-09-24 02:58:24.651814', '2012-09-24 02:58:24.651814')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 6, 59500000.0, '2012-09-24 02:58:24.767487', '2012-09-24 02:58:24.767487')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 7, 55400000.0, '2012-09-24 02:58:24.935657', '2012-09-24 02:58:24.935657')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 8, 35000000.0, '2012-09-24 02:58:25.091783', '2012-09-24 02:58:25.091783')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 9, 36500000.0, '2012-09-24 02:58:25.200594', '2012-09-24 02:58:25.200594')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 10, 154500000.0, '2012-09-24 02:58:25.307349', '2012-09-24 02:58:25.307349')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 11, 17800000.0, '2012-09-24 02:58:25.403438', '2012-09-24 02:58:25.403438')
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 12, 52600000.0, '2012-09-24 02:58:25.525009', '2012-09-24 02:58:25.525009')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 13, 98500000.0, '2012-09-24 02:58:25.631353', '2012-09-24 02:58:25.631353')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 14, 110300000.0, '2012-09-24 02:58:25.739339', '2012-09-24 02:58:25.739339')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 15, 13500000.0, '2012-09-24 02:58:25.836574', '2012-09-24 02:58:25.836574')
+  [1m[36mAREL (0.7ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 16, 101700000.0, '2012-09-24 02:58:25.944405', '2012-09-24 02:58:25.944405')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 17, 882700000.0, '2012-09-24 02:58:26.051305', '2012-09-24 02:58:26.051305')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 18, 9000000.0, '2012-09-24 02:58:26.152048', '2012-09-24 02:58:26.152048')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 19, 8900000.0, '2012-09-24 02:58:26.243548', '2012-09-24 02:58:26.243548')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 20, 7500000.0, '2012-09-24 02:58:26.340369', '2012-09-24 02:58:26.340369')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 21, 1400000.0, '2012-09-24 02:58:26.435651', '2012-09-24 02:58:26.435651')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 22, 1100000.0, '2012-09-24 02:58:26.531617', '2012-09-24 02:58:26.531617')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 23, 246000000.0, '2012-09-24 02:58:26.639852', '2012-09-24 02:58:26.639852')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 24, 8200000.0, '2012-09-24 02:58:26.748441', '2012-09-24 02:58:26.748441')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expense_entries" ("scenario_id", "expense_id", "entry", "created_at", "updated_at") VALUES (1, 25, 29500000.0, '2012-09-24 02:58:26.855633', '2012-09-24 02:58:26.855633')
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.5ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (121.2ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (95.2ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (117.4ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (77.2ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (147.0ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (110.8ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (119.6ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (78.3ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (90.2ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (73.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (71.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (69.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (72.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (83.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (71.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (83.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (72.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (71.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (95.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (159.2ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (90.8ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (110.5ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (75.7ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (101.3ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (85.3ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (80.6ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (81.3ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (115.4ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (72.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (71.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (71.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (71.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (71.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (71.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (71.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (167.6ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (78.9ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (158.9ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (99.2ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (187.3ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (121.0ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (116.5ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (81.4ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (90.9ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (88.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (79.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (83.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (83.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (83.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (83.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (83.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (83.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (83.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (83.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (83.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (188.1ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (70.1ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (96.1ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (80.0ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (97.5ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (67.0ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (68.5ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (71.0ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (97.7ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (89.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (59.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (83.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (71.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (71.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (71.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (71.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (71.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (71.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (165.9ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (99.0ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (90.7ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (109.4ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (117.3ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (79.6ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (80.2ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (82.6ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (110.1ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (91.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (119.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (83.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (71.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (83.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (95.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (84.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (95.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (71.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (83.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (83.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.4ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (144.5ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (91.1ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (127.5ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (97.8ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (171.9ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (160.0ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (142.8ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (106.8ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (129.0ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (109.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (84.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (94.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (83.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (96.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (155.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (239.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (119.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (179.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (180.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (81.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (195.8ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (137.9ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (149.1ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (100.3ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (115.2ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (98.5ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (104.1ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (84.1ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (116.4ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (84.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (95.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (82.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (95.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (95.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (95.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (107.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (107.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (107.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (95.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (95.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mExpenseEntry Load (11.8ms)[0m  [1mSELECT "expense_entries".* FROM "expense_entries" WHERE ("expense_entries".scenario_id = 1)[0m
+  [1m[35mIncomeEntry Load (30.7ms)[0m  SELECT "income_entries".* FROM "income_entries" WHERE ("income_entries".scenario_id = 1)
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (123.3ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (98.9ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (115.0ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (97.6ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (131.0ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (83.2ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (202.7ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (95.0ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (96.5ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (188.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (86.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (83.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (83.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (83.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (71.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (95.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (71.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (107.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (95.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (81.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (147.4ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (159.9ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (135.1ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (87.8ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (115.3ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (170.8ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (128.3ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (91.1ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (96.2ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (93.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (71.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (70.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (83.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (83.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (107.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (136.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (139.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (95.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (71.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (71.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (175.9ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (94.5ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (120.5ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (91.4ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (124.2ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (98.0ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (70.8ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (82.5ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (150.0ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (88.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (71.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (71.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (72.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (83.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (71.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (71.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (71.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (84.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (71.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (71.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (167.2ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (82.5ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (119.2ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (94.3ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (133.4ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (129.3ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (140.2ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (80.1ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (123.8ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (90.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (143.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (83.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (83.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (95.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (118.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (121.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (119.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (83.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (71.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (83.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (188.2ms)[0m  CREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (167.5ms)[0m  CREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (120.5ms)[0m  CREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (91.4ms)[0m  CREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (109.7ms)[0m  CREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (114.4ms)[0m  CREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (140.4ms)[0m  CREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (286.6ms)[0m  CREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (112.6ms)[0m  CREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (77.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (95.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (71.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120924021317')[0m
+  [1m[35mSQL (69.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20110623075710')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100805043508')[0m
+  [1m[35mSQL (71.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150819')
+  [1m[36mSQL (145.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923145222')[0m
+  [1m[35mSQL (127.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923145010')
+  [1m[36mSQL (74.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20120923150906')[0m
+  [1m[35mSQL (71.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20120923150921')
+  [1m[36mSQL (71.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110927070839')[0m

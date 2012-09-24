@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  scenario_id: 
+  entry: 1.5
+
+two:
+  scenario_id: 
+  entry: 1.5

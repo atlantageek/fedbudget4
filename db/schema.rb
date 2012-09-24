@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927070839) do
+ActiveRecord::Schema.define(:version => 20120924021317) do
 
   create_table "achievements", :force => true do |t|
     t.string   "title"
@@ -21,9 +21,59 @@ ActiveRecord::Schema.define(:version => 20110927070839) do
     t.datetime "updated_at"
   end
 
+  create_table "bacons", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "expense_entries", :force => true do |t|
+    t.integer  "scenario_id"
+    t.integer  "expense_id"
+    t.float    "entry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "expenses", :force => true do |t|
+    t.string   "name"
+    t.string   "descr"
+    t.integer  "orig_expense"
+    t.string   "ref"
+    t.boolean  "editable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "facebooks", :force => true do |t|
     t.string   "identifier",   :limit => 20
     t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "income_entries", :force => true do |t|
+    t.integer  "scenario_id"
+    t.integer  "income_id"
+    t.float    "entry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "incomes", :force => true do |t|
+    t.string   "name"
+    t.string   "descr"
+    t.integer  "orig_income"
+    t.float    "orig_rate"
+    t.string   "change_type"
+    t.string   "ref"
+    t.boolean  "editable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scenarios", :force => true do |t|
+    t.integer  "facebook_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

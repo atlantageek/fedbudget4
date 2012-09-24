@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: 
+  descr: 
+  orig_expense: 1
+  ref: MyString
+  editable: false
+
+two:
+  name: 
+  descr: 
+  orig_expense: 1
+  ref: MyString
+  editable: false

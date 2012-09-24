@@ -1,0 +1,173 @@
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (119.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (158.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateFacebooks (20100805043508)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE TABLE "facebooks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "identifier" varchar(20), "access_token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100805043508')
+Migrating to CreateSubscriptions (20110623075710)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "subscriptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "object" varchar(255), "fields" varchar(255), "verify_token" varchar(255), "history_json" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110623075710')
+Migrating to CreateAchievements (20110927070839)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "achievements" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" varchar(255), "image_url" varchar(255), "points" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110927070839')
+Migrating to CreateExpenses (20120923145010)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "expenses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_expense" integer, "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923145010')
+Migrating to CreateIncomes (20120923145222)
+  [1m[36mSQL (0.9ms)[0m  [1mCREATE TABLE "incomes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "descr" varchar(255), "orig_income" integer, "orig_rate" float, "change_type" varchar(255), "ref" varchar(255), "editable" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923145222')
+Migrating to CreateScenarios (20120923150819)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "scenarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "facebook_id" integer, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923150819')
+Migrating to CreateExpenseEntries (20120923150906)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "expense_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "expense_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923150906')
+Migrating to CreateIncomeEntries (20120923150921)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "income_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "scenario_id" integer, "income_id" integer, "entry" float, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120923150921')
+Migrating to CreateBacons (20120924021317)
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE TABLE "bacons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120924021317')
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("achievements")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("bacons")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("expense_entries")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("expenses")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("facebooks")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("income_entries")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("incomes")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("scenarios")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("subscriptions")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('10% Tax Bracket', '2012''s 10% tax bracket', 15092670, 10.0, NULL, 'bracket10', 't', '2012-09-24 02:22:47.841234', '2012-09-24 02:22:47.841234')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (1.1ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('15% Tax Bracket', 'Current 15% tax bracket', 157306037, 15.0, NULL, 'bracket15', 't', '2012-09-24 02:22:48.134554', '2012-09-24 02:22:48.134554')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('25% Tax Bracket', 'Current 25% tax bracket', 274328164, 25.0, NULL, 'bracket25', 't', '2012-09-24 02:22:48.242025', '2012-09-24 02:22:48.242025')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('28% Tax Bracket', 'Current 28% tax bracket', 119085422, 28.0, NULL, 'bracket28', 't', '2012-09-24 02:22:48.313961', '2012-09-24 02:22:48.313961')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('33% Tax Bracket', 'Current 33% tax bracket', 98477349, 33.0, NULL, 'bracket33', 't', '2012-09-24 02:22:48.409937', '2012-09-24 02:22:48.409937')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('35% Tax Bracket', 'Current 35% tax bracket', 270684118, 35.0, NULL, 'bracket35', 't', '2012-09-24 02:22:48.481956', '2012-09-24 02:22:48.481956')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Capital Gains', 'Current capital gains', 47345378, 15.0, NULL, 'capital_gains', 't', '2012-09-24 02:22:48.553929', '2012-09-24 02:22:48.553929')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Gasoline Tax', 'Current capital gains', 129557444, 0.18, NULL, 'gasoline_tax', 't', '2012-09-24 02:22:48.625899', '2012-09-24 02:22:48.625899')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Corporate Rate', 'Current capital gains', 746093750, 25.0, NULL, 'corporate_tax', 't', '2012-09-24 02:22:48.698171', '2012-09-24 02:22:48.698171')
+WARNING: Can't mass-assign protected attributes: type
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Payroll Taxes', 'Payroll Taxes', 864000000, 25.0, NULL, 'payroll_tax', 't', '2012-09-24 02:22:48.793603', '2012-09-24 02:22:48.793603')[0m
+WARNING: Can't mass-assign protected attributes: type
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "incomes" ("name", "descr", "orig_income", "orig_rate", "change_type", "ref", "editable", "created_at", "updated_at") VALUES ('Misc.', 'Payroll Taxes', 184600000, NULL, NULL, 'misc_income', 'f', '2012-09-24 02:22:48.877769', '2012-09-24 02:22:48.877769')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Defense', NULL, 672900000, 'defense', 't', '2012-09-24 02:22:48.966540', '2012-09-24 02:22:48.966540')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Health and Human services', NULL, 949900000, 'health', 't', '2012-09-24 02:22:49.033965', '2012-09-24 02:22:49.033965')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Education', NULL, 71900000, 'education', 't', '2012-09-24 02:22:49.105681', '2012-09-24 02:22:49.105681')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Veteran Affairs', NULL, 139700000, 'vetran', 't', '2012-09-24 02:22:49.177700', '2012-09-24 02:22:49.177700')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Housing', NULL, 46300000, 'housing', 't', '2012-09-24 02:22:49.249694', '2012-09-24 02:22:49.249694')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of State', NULL, 59500000, 'state', 't', '2012-09-24 02:22:49.321696', '2012-09-24 02:22:49.321696')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Homeland Security', NULL, 55400000, 'homeland', 't', '2012-09-24 02:22:49.405686', '2012-09-24 02:22:49.405686')[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Energy', NULL, 35000000, 'energy', 't', '2012-09-24 02:22:49.477879', '2012-09-24 02:22:49.477879')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Justice', NULL, 36500000, 'justice', 't', '2012-09-24 02:22:49.561729', '2012-09-24 02:22:49.561729')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Agriculture', NULL, 154500000, 'agriculture', 't', '2012-09-24 02:22:49.632783', '2012-09-24 02:22:49.632783')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('National Aeronautics and Space Administration', NULL, 17800000, 'nasa', 't', '2012-09-24 02:22:49.706391', '2012-09-24 02:22:49.706391')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('National Intelligence Program', NULL, 52600000, 'intelligence', 't', '2012-09-24 02:22:49.766479', '2012-09-24 02:22:49.766479')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Transportation', NULL, 98500000, 'transportation', 't', '2012-09-24 02:22:49.826393', '2012-09-24 02:22:49.826393')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of the Treasury', NULL, 110300000, 'treasury', 't', '2012-09-24 02:22:49.898342', '2012-09-24 02:22:49.898342')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of the Interior', NULL, 13500000, 'interior', 't', '2012-09-24 02:22:49.983968', '2012-09-24 02:22:49.983968')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Labor', NULL, 101700000, 'labor', 't', '2012-09-24 02:22:50.139652', '2012-09-24 02:22:50.139652')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Social Security Administration', NULL, 882700000, 'ss', 't', '2012-09-24 02:22:51.397542', '2012-09-24 02:22:51.397542')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Department of Commerce', NULL, 9000000, 'commerce', 't', '2012-09-24 02:22:51.542422', '2012-09-24 02:22:51.542422')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Environmental Protection Agency', NULL, 8900000, 'EPA', 't', '2012-09-24 02:22:51.675397', '2012-09-24 02:22:51.675397')[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('National Science Foundation', NULL, 7500000, 'NSF', 't', '2012-09-24 02:22:51.805098', '2012-09-24 02:22:51.805098')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Small Business Administration', NULL, 1400000, 'sba', 't', '2012-09-24 02:22:52.117570', '2012-09-24 02:22:52.117570')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Corporation for National and Community Service', NULL, 1100000, 'community_service', 't', '2012-09-24 02:22:52.404881', '2012-09-24 02:22:52.404881')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Net interest', NULL, 246000000, 'interest', 'f', '2012-09-24 02:22:52.598365', '2012-09-24 02:22:52.598365')[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Army Corps ', NULL, 8200000, 'civil_eng', 't', '2012-09-24 02:22:52.803245', '2012-09-24 02:22:52.803245')
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "expenses" ("name", "descr", "orig_expense", "ref", "editable", "created_at", "updated_at") VALUES ('Other', NULL, 29500000, 'other', 'f', '2012-09-24 02:22:52.959289', '2012-09-24 02:22:52.959289')[0m
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, 'test1', '2012-09-24 03:22:09.873944', '2012-09-24 03:22:09.873944')
+  [1m[36mIncome Load (0.1ms)[0m  [1mSELECT "incomes".* FROM "incomes"[0m
+  [1m[35mExpense Load (0.1ms)[0m  SELECT "expenses".* FROM "expenses"
+  [1m[36mExpenseEntry Load (0.2ms)[0m  [1mSELECT "expense_entries".* FROM "expense_entries" WHERE ("expense_entries".scenario_id = 1)[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, 'test1', '2012-09-24 03:22:09.965717', '2012-09-24 03:22:09.965717')
+  [1m[36mIncome Load (0.2ms)[0m  [1mSELECT "incomes".* FROM "incomes"[0m
+  [1m[35mExpense Load (0.1ms)[0m  SELECT "expenses".* FROM "expenses"
+  [1m[36mIncomeEntry Load (0.2ms)[0m  [1mSELECT "income_entries".* FROM "income_entries" WHERE ("income_entries".scenario_id = 1)[0m
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, 'test1', '2012-09-24 03:22:54.365579', '2012-09-24 03:22:54.365579')
+  [1m[36mIncome Load (0.1ms)[0m  [1mSELECT "incomes".* FROM "incomes"[0m
+  [1m[35mExpense Load (0.1ms)[0m  SELECT "expenses".* FROM "expenses"
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "expense_entries" WHERE ("expense_entries".scenario_id = 1)[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, 'test1', '2012-09-24 03:22:54.421989', '2012-09-24 03:22:54.421989')
+  [1m[36mIncome Load (0.1ms)[0m  [1mSELECT "incomes".* FROM "incomes"[0m
+  [1m[35mExpense Load (0.0ms)[0m  SELECT "expenses".* FROM "expenses"
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "income_entries" WHERE ("income_entries".scenario_id = 1)[0m
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, 'test1', '2012-09-24 03:26:15.338454', '2012-09-24 03:26:15.338454')
+  [1m[36mIncome Load (1.4ms)[0m  [1mSELECT "incomes".* FROM "incomes"[0m
+  [1m[35mExpense Load (0.1ms)[0m  SELECT "expenses".* FROM "expenses"
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "expense_entries" WHERE ("expense_entries".scenario_id = 1)[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, 'test1', '2012-09-24 03:26:15.407008', '2012-09-24 03:26:15.407008')
+  [1m[36mIncome Load (0.1ms)[0m  [1mSELECT "incomes".* FROM "incomes"[0m
+  [1m[35mExpense Load (0.0ms)[0m  SELECT "expenses".* FROM "expenses"
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "income_entries" WHERE ("income_entries".scenario_id = 1)[0m
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, 'test1', '2012-09-24 03:35:57.005548', '2012-09-24 03:35:57.005548')
+  [1m[36mIncome Load (0.1ms)[0m  [1mSELECT "incomes".* FROM "incomes"[0m
+  [1m[35mExpense Load (0.1ms)[0m  SELECT "expenses".* FROM "expenses"
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "expense_entries" WHERE ("expense_entries".scenario_id = 1)[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "scenarios" ("facebook_id", "name", "created_at", "updated_at") VALUES (NULL, 'test1', '2012-09-24 03:35:57.037901', '2012-09-24 03:35:57.037901')
+  [1m[36mIncome Load (0.1ms)[0m  [1mSELECT "incomes".* FROM "incomes"[0m
+  [1m[35mExpense Load (0.0ms)[0m  SELECT "expenses".* FROM "expenses"
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "income_entries" WHERE ("income_entries".scenario_id = 1)[0m
